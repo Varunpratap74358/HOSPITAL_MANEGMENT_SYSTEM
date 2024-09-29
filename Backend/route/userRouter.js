@@ -6,7 +6,7 @@ const router = express.Router()
 
 router.post("/patient/register",patientRegister)
 router.post("/login",login)
-router.post("/admin/addnew",isAdminAuthenticated ,addAdmin)
+router.post("/admin/addnew" ,addAdmin)//
 router.get("/docters",getAllDocter)
 router.get("/admin/me", isAdminAuthenticated ,getUserDetails)
 router.get("/patient/me", isPatientAuthenticated ,getUserDetails)

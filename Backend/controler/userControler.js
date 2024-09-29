@@ -246,6 +246,6 @@ export const addNewDoctor = catchAsyncError(async (req, res, next) => {
     })
   } catch (error) {
     // console.log(error)
-    res.json({ error })
+    res.json({ error:error.message })
   }
 })
