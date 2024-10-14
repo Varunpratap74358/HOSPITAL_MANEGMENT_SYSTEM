@@ -17,7 +17,7 @@ const AppointmentForm = () => {
   const [doctor_lastName, setDoctor_lastName] = useState('')
   const [address, setAddress] = useState('')
   const [hasVisited, setHasVisited] = useState(false)
-    const navigate = useNavigate()
+  const navigate = useNavigate()
   const departmensArray = [
     'Pediatrics',
     'Orthopedics',
@@ -57,8 +57,8 @@ const AppointmentForm = () => {
         },
       )
       toast.success(data?.message)
-      navigate("/")
-    console.log(data)
+      navigate('/')
+      console.log(data)
       setFirstName(''),
         setLastName(''),
         setEmail(''),
@@ -72,11 +72,10 @@ const AppointmentForm = () => {
         setDoctor_lastName(''),
         setHasVisited(''),
         setAddress('')
-
     } catch (error) {
       toast.error(error.response?.data?.message)
       toast.error(error?.message)
-    console.log(error)
+      console.log(error)
     }
   }
 
@@ -90,12 +89,11 @@ const AppointmentForm = () => {
         },
       )
       setDoctors(data.docters)
-    //   console.log(data.docters) 
+      //   console.log(data.docters)
     }
     fetchDoctors()
     // console.log("doctors",doctors)
   }, [])
-
 
   return (
     <>

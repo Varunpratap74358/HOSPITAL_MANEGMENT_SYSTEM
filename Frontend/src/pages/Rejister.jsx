@@ -47,8 +47,8 @@ const Rejister = () => {
           setIsAuthonticated(true)
         })
     } catch (error) {
-      toast.error(error.response?.data?.message)
-      console.log(error.response.data)
+      toast.error(error?.response?.data?.message)
+      console.log(error?.response.data)
     }
   }
 

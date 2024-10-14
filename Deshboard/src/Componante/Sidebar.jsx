@@ -28,6 +28,8 @@ const Sidebar = () => {
         toast.success(res.data?.message)
         setisAuthonticated(false)
         navigateTo("/login")
+        // return <Navigate to={'/login'} />
+        window.location.reload()
       })
       .catch((err) => {
         toast.error(err.response?.data?.message)

@@ -28,7 +28,6 @@ const Login = () => {
         )
         .then((res) => {
           toast.success(res.data.message);
-          // console.log(res)
           setIsAuthonticated(true);
           navigateTo("/");
           setEmail("");
@@ -36,8 +35,8 @@ const Login = () => {
           setConfirmPassword("");
         });
     } catch (error) {
-      toast.error(error.response.data.message);
-      console.log(error.message)
+      toast.error(error?.response?.data?.message);
+      console.log(error?.message)
     }
   };
 

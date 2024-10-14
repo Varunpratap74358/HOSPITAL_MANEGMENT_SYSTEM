@@ -1,47 +1,47 @@
-import axios from "axios";
-import React, { useContext, useState } from "react";
-import { toast } from "react-toastify";
-import { Context } from "../main";
-import { Link, useNavigate, Navigate } from "react-router-dom";
+import axios from 'axios'
+import React, { useContext, useState } from 'react'
+import { toast } from 'react-toastify'
+import { Context } from '../main'
+import { Link, useNavigate, Navigate } from 'react-router-dom'
 
 const Login = () => {
-  const { isAuthonticated, setIsAuthonticated } = useContext(Context);
+  const { isAuthonticated, setIsAuthonticated } = useContext(Context)
 
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [confirmPassword, setConfirmPassword] = useState('')
 
-  const navigateTo = useNavigate();
+  const navigateTo = useNavigate()
 
   const handleLogin = async (e) => {
-    e.preventDefault();
+    e.preventDefault()
     try {
       await axios
         .post(
-          "http://localhost:3000/api/v1/user/login",
-          { email, password, confirmPassword, role: "Patient" },
+          'http://localhost:3000/api/v1/user/login',
+          { email, password, confirmPassword, role: 'Patient' },
           {
             withCredentials: true,
-            headers: { "Content-Type": "application/json" },
-          }
+            headers: { 'Content-Type': 'application/json' },
+          },
         )
         .then((res) => {
-          toast.success(res.data.message);
+          toast.success(res.data?.message)
           console.log(res)
-          setIsAuthonticated(true);
-          navigateTo("/");
-          setEmail("");
-          setPassword("");
-          setConfirmPassword("");
-        });
+          setIsAuthonticated(true)
+          navigateTo('/')
+          setEmail('')
+          setPassword('')
+          setConfirmPassword('')
+        })
     } catch (error) {
-      toast.error(error.response.data.message);
+      toast.error(error?.response?.data?.message)
       console.log(error.message)
     }
-  };
+  }
 
   if (isAuthonticated) {
-    return <Navigate to={"/"} />;
+    return <Navigate to={'/'} />
   }
 
   return (
@@ -74,26 +74,26 @@ const Login = () => {
           />
           <div
             style={{
-              gap: "10px",
-              justifyContent: "flex-end",
-              flexDirection: "row",
+              gap: '10px',
+              justifyContent: 'flex-end',
+              flexDirection: 'row',
             }}
           >
             <p style={{ marginBottom: 0 }}>Not Registered?</p>
             <Link
-              to={"/register"}
-              style={{ textDecoration: "none", color: "#271776ca" }}
+              to={'/register'}
+              style={{ textDecoration: 'none', color: '#271776ca' }}
             >
               Register Now
             </Link>
           </div>
-          <div style={{ justifyContent: "center", alignItems: "center" }}>
+          <div style={{ justifyContent: 'center', alignItems: 'center' }}>
             <button type="submit">Login</button>
           </div>
         </form>
       </div>
     </>
-  );
-};
+  )
+}
 
-export default Login;
+export default Login
